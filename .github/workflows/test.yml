@@ -1,0 +1,15 @@
+name: Test Setup Action
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  test-setup:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: ./setup-env
+    - name: Verify Clojure installation
+      run: clojure --version
