@@ -10,6 +10,7 @@ jobs:
   test-setup:
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v6
     - uses: ./setup-env
     - name: Verify Clojure installation
       run: clojure --version
