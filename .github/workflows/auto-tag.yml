@@ -1,0 +1,22 @@
+name: Auto-update v1 tag
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  update-tag:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+    - uses: actions/checkout@v6
+      with:
+        fetch-depth: 0
+
+    - name: Update v1 tag to latest commit
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+        git tag -f v1
+        git push -f origin v1
